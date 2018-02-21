@@ -1,0 +1,23 @@
+<zk>
+    <window apply="org.zkoss.bind.BindComposer" viewModel="@id('vm')@init('ru.vampa.zkTable.model.ProcedureListModel')">
+        <menubar><menuitem label="Логин" action="@validator()"/></menubar>
+        <listbox id="procedureList" height="160px" model="@load(vm.procedures)" emptyMessage="Список пуст">
+            <listhead>
+                <listheader label="Процедура"/>
+                <listheader label="ФИО специалиста"/>
+                <listheader label="Стоимость услуги"/>
+                <listheader label="День недели, время"/>
+                <listheader label="Кабинет приёма"/>
+            </listhead>
+            <template name="model">
+                <listitem>
+                    <listcell><label value="${each.title}"/></listcell>
+                    <listcell><label value="${each.specialist.fio}"/></listcell>
+                    <listcell>$<label value="@init(each.price)" /></listcell>
+                    <listcell><label value="@init(each.reception.title)"/></listcell>
+                    <listcell><label value="@init(each.office.title)"/></listcell>
+                </listitem>
+            </template>
+        </listbox>
+    </window>
+</zk>
